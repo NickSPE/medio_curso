@@ -14,13 +14,13 @@ body {
 
 .login-container {
     background-image: url('../img/Fondo.jpg');  
-    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen dentro del contenedor */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
     width: 100%;
-    max-width: 700px; /* Ajusta el tamaño máximo del contenedor */
-    height: 550px; /* Ajusta la altura del contenedor */
-    padding: 100px 180px; /* Espaciado interior */
+    max-width: 700px; 
+    height: 550px; 
+    padding: 100px 180px; 
     text-align: center;
     border-radius: 8px;
     display: flex;
