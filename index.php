@@ -1,25 +1,51 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/etc/config.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
+
     session_start();
 
-        if (isset($_SESSION["txtusername"])) {
-        header('Location: '.get_views('dashboard.php'));
-    exit;
-    }
+    function get_connection() {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "dbsistema";
 
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        return $conn;
+    }
+    
+    function get_user_credentials($username) {
+        require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
+        $conn = get_connection();
+        $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE username = ? LIMIT 1");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        $stmt->close();
+        $conn->close();
+        return $user;
+    }
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $v_username = $_POST["txtusername"] ?? '';
         $v_password = $_POST["txtpassword"] ?? '';
-
-            if ($v_username == "admin" && $v_password == "1234") {
+    
+        $user = get_user_credentials($v_username);
+    
+        if ($user && $v_password === $user['password']) {
             $_SESSION["txtusername"] = $v_username;
             header('Location: '.get_views('dashboard.php'));
-        exit;
-    } else {
-        header('Location: '.get_views('claveequivocada.php'));
-        exit;
-    }
+            exit;
+        } else {
+            header('Location: '.get_views('claveequivocada.php'));
+            exit;
+        }
     }
 ?>
 
@@ -43,3 +69,7 @@
         </div>
     </body>
 </html>
+
+
+
+

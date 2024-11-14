@@ -8,8 +8,6 @@ class conexion
     private $userdb;
     private $passworddb;
     private $charset;
-
-
     private $pdo;
 
     public function __construct($host, $namedb, $userdb, $passworddb, $charset = 'utf8')
@@ -20,25 +18,32 @@ class conexion
         $this->passworddb = $passworddb;
         $this->charset = $charset;
     }
+
     private function conectar()
     {
-        $dsn = "mysql:host={$this->host}; dbname={$this->namedb}; charset={$this->charset}";
+        $dsn = "mysql:host={$this->host};dbname={$this->namedb};charset={$this->charset}";
         try {
             $this->pdo = new PDO($dsn, $this->userdb, $this->passworddb);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            die('Hubo un error' . $e->getMessage());
+            die('Hubo un error al conectar con la base de datos: ' . $e->getMessage());
         }
     }
 
     public function obtenerconexion()
     {
+        $this->conectar();
         return $this->pdo;
     }
+
     public function contesta()
     {
-        $dsn = "mysql:host={$this->host} ;dbname={$this->namedb};charset={$this->charset}";
+        $dsn = "mysql:host={$this->host};dbname={$this->namedb};charset={$this->charset}";
         return $dsn;
     }
 }
-//echo "la compilacion esta OK"
+
+// Example usage
+// $conexion = new conexion('localhost', 'database_name', 'username', 'password');
+// $pdo = $conexion->obtenerconexion();
+// echo "Conexión exitosa";
