@@ -43,6 +43,7 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
             case 'Ver':
                 echo "<h3>Sección de Ver</h3>";
                 echo "<p>Aquí puedes ver todos los registros.</p>";
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/verdatos.php';
                 break;
             case 'Ingresar':
                 echo "<h3>Sección de Ingresar</h3>";
@@ -64,4 +65,3 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
         ?>
     </div>
 </body>
-</html>

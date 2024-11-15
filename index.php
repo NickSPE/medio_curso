@@ -22,7 +22,7 @@
     function get_user_credentials($username) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
         $conn = get_connection();
-        $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE username = ? LIMIT 1");
+        $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE BINARY username = ? LIMIT 1");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -49,6 +49,7 @@
     }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -56,6 +57,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link rel="stylesheet" href="<?php echo get_urlBase('/css/style.css') ?>">
+        <link rel="stylesheet" href="styles.css?v=1.0">
+
     </head>
     <body>
         <div class="login-container">
@@ -69,7 +72,3 @@
         </div>
     </body>
 </html>
-
-
-
-

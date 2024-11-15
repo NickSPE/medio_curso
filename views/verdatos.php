@@ -2,7 +2,9 @@
     require_once $_SERVER['DOCUMENT_ROOT'].'/etc/config.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if(!isset($_SESSION["txtusername"])){
          header('Location:'.get_urlBase('index.php'));
          exit();
@@ -28,12 +30,5 @@
          echo "Error al conectar con la base de datos.";
     }
 
-    echo "<br>";
-    echo $host;
-    echo "<br>";
-    echo $namedb;
-    echo "<br>";
-    echo $userdb;
-    echo "<br>";
-    echo $conexion->contesta();
+    
 ?>
