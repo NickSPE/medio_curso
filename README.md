@@ -1,6 +1,10 @@
 **Login del Sistema**
+
 ![image](https://github.com/user-attachments/assets/01e8742f-774b-4645-98f9-25c648af6c99)
+
 **Dashboard del sistema**
+
+
 ![image](https://github.com/user-attachments/assets/502ac05a-ae67-4e65-bfc9-b67f0f97ac9f)
 
 
