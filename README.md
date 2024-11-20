@@ -107,8 +107,7 @@ Antes de comenzar, asegúrate de tener instalados:
 
 ### **Iniciar Sesión**
 1. Introduce tu nombre de usuario y contraseña.
-2. *(Opcional)* Marca la opción **"Recordar"** para guardar las credenciales.
-3. Haz clic en el botón **LOGIN**.
+2. Haz clic en el botón **LOGIN**.
 
 ### **Gestionar Datos**
 - Ingresa, modifica o elimina información desde las vistas correspondientes.
