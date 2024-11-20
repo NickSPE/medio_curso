@@ -7,4 +7,4 @@
     session_destroy();
     header("Location: ".get_UrlBase('index.php'));
     exit;
-?>
+?> 

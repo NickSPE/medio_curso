@@ -41,20 +41,20 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
                 echo "<p>Selecciona una opción para comenzar.</p>";
                 break;
             case 'Ver':
-                echo "<h3>Sección de Ver</h3>";
+                echo "<h3>Bienvenido a la Sección de Ver</h3>";
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/verdatos.php';
                 break;
             case 'Ingresar':
-                echo "<h3>Sección de Ingresar</h3>";
+                echo "<h3>Bienvenido a la Sección de Ingresar datos</h3>";
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/ingresardatos.php';
 
                 break;
             case 'Modificar':
-                echo "<h3>Sección de Modificar</h3>";
+                echo "<h3>Bienvenido a la Sección de Modificar</h3>";
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/modificardatos.php';
                 break;
             case 'Eliminar':
-                echo "<h3>Sección de Eliminar</h3>";
+                echo "<h3>Bienvenido a la Sección de Eliminar</h3>";
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/eliminardatos.php';
                 break;
             default:
@@ -65,3 +65,4 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
         ?>
     </div>
 </body>
+

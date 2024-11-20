@@ -10,7 +10,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: rgb(177, 223, 208);
-}
+} 
 
 .login-container {
     background-image: url('/img/Fondo.jpg');  

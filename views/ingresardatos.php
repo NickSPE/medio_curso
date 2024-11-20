@@ -2,6 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/etc/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
 
+$error = '';
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $tmpdatusuario = $_POST["datusuario"];
     $tmpdatpassword = $_POST["datpassword"];
@@ -15,17 +17,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         exit();
     }
 
-    // Asegúrate de que estas variables estén definidas en config.php
     $conexion = new conexion($host, $namedb, $userdb, $passworddb);
     $pdo = $conexion->obtenerconexion(); 
     try {
-        $sentencia = $pdo->prepare("INSERT INTO usuarios (username, password, perfil) VALUES (?, ?, ?)");
-        $sentencia->execute([$tmpdatusuario, $tmpdatpassword, $tmpdatperfil]);
-        echo "usuario registrado con exito <br>";
+        // Verificar si el usuario ya existe
+        $sentencia = $pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE username = ?");
+        $sentencia->execute([$tmpdatusuario]);
+        $usuarioExiste = $sentencia->fetchColumn();
+
+        if ($usuarioExiste > 0) {
+            $error = "El nombre de usuario ya existe. Por favor, elige otro.";
+        } else {
+            // Insertar nuevo usuario
+            $sentencia = $pdo->prepare("INSERT INTO usuarios (username, password, perfil) VALUES (?, ?, ?)");
+            $sentencia->execute([$tmpdatusuario, $tmpdatpassword, $tmpdatperfil]);
+            echo "Usuario registrado con éxito <br>";
+        }
     } catch (PDOException $e) {
-        echo "Error al registrar usuario: " . $e->getMessage();
+        $error = "Error al registrar usuario: " . $e->getMessage();
     }
-    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -34,12 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Usuario</title>
-    <link rel="stylesheet" href="/css/estiloingresar.css">
+    <link rel="stylesheet" href="<?php echo get_urlBase('css/estiloingresar.css') ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <form action="" method="POST">
         <h2>Registrar un nuevo usuario</h2>
+
+        <?php if ($error): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
 
         <div class="form-group">
             <i class="fas fa-user"></i>

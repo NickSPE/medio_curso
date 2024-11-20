@@ -30,7 +30,7 @@ class conexion
             die('Hubo un error al conectar con la base de datos: ' . $e->getMessage());
         }
     }
-
+ 
     public function obtenerconexion()
     {
         $this->conectar();
