@@ -95,7 +95,10 @@ Antes de comenzar, asegúrate de tener instalados:
 2. **Configurar la Base de Datos**
 - Importa el archivo SQL proporcionado en **phpMyAdmin** para crear la base de datos requerida.
 - Edita el archivo `etc/config.php` con las credenciales de tu base de datos:
-
+ `define('DB_HOST', 'localhost') `;
+ `define('DB_USER', 'root') `;
+ `define('DB_PASS', '') `;
+ `define('DB_NAME', 'nombre_base_de_datos') `;
 3. **Iniciar el Servidor**
 1- Coloca los archivos en la carpeta raíz del servidor local (htdocs en XAMPP).
 2- Abre el archivo index.php en tu navegador.
