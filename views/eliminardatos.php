@@ -27,7 +27,7 @@
              $stmt->execute([$tmpdatusuario]);
              echo "<p class='success-message'>Usuario eliminado correctamente.</p>";
           } else {
-             echo "<p class='error-message'>Usuario no encontrado.</p>";
+             echo "<p class='error-message'>Usuario no encontrado.</p>"; 
           }
        } catch (PDOException $e) {
           echo "Error al eliminar usuario: " . $e->getMessage();

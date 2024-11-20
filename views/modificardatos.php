@@ -23,7 +23,7 @@
             <?php
         } else {
             $tmpdatusuario = isset($_POST["datusuario"]) ? $_POST["datusuario"] : '';
-
+ 
             // Asegúrate de que estas variables estén definidas en config.php
             $conexion = new conexion($host, $namedb, $userdb, $passworddb);
             $pdo = $conexion->obtenerconexion();

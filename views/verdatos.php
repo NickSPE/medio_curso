@@ -32,7 +32,7 @@
                  }
                  echo '</table>';
            } else {
-                 echo "Error en la consulta SQL.";
+                 echo "Error en la consulta SQL."; 
            }
      } else {
            echo "Error al conectar con la base de datos.";

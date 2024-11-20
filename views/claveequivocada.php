@@ -28,6 +28,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
         document.getElementById("errorModal").style.display = "flex";
     </script>
 
-</body>
+</body> 
 
 </html>
