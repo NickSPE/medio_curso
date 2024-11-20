@@ -1,0 +1,67 @@
+/* Estilo general para la tabla */
+.custom-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Encabezado de la tabla */
+.custom-table th {
+    background-color: #6cc1c8;
+    color: white;
+    padding: 12px 15px;
+    text-transform: uppercase;
+}
+
+/* Filas de la tabla */
+.custom-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternar colores de las filas */
+.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.custom-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover en las filas */
+.custom-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo de la primera columna (ID) */
+.custom-table td:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Redondear bordes para la tabla */
+.custom-table {
+    border-radius: 8px;
+    overflow: hidden; /* Para evitar que el borde se salga */
+}
+
+/* Centrar la tabla en la página */
+.custom-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo para mensajes de error (opcional) */
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}

@@ -17,6 +17,7 @@ class conexion
         $this->userdb = $userdb;
         $this->passworddb = $passworddb;
         $this->charset = $charset;
+        $this->conectar();
     }
 
     private function conectar()

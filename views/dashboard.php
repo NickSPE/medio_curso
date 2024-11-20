@@ -42,20 +42,20 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
                 break;
             case 'Ver':
                 echo "<h3>Sección de Ver</h3>";
-                echo "<p>Aquí puedes ver todos los registros.</p>";
                 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/verdatos.php';
                 break;
             case 'Ingresar':
                 echo "<h3>Sección de Ingresar</h3>";
-                echo "<p>Aquí puedes ingresar nuevos datos.</p>";
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/ingresardatos.php';
+
                 break;
             case 'Modificar':
                 echo "<h3>Sección de Modificar</h3>";
-                echo "<p>Aquí puedes modificar los registros existentes.</p>";
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/modificardatos.php';
                 break;
             case 'Eliminar':
                 echo "<h3>Sección de Eliminar</h3>";
-                echo "<p>Aquí puedes eliminar los registros.</p>";
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/eliminardatos.php';
                 break;
             default:
                 echo "<h3>Opción no válida</h3>";
