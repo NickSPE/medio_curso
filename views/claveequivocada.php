@@ -11,6 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
     <link rel="stylesheet" href="<?php echo get_urlBase('/css/estiloclaveequivocada.css') ?>">
 </head>
 
+
 <body>
 
     <!-- Contenido principal -->

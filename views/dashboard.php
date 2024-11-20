@@ -65,3 +65,4 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
         ?>
     </div>
 </body>
+

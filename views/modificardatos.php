@@ -82,6 +82,7 @@
             <button type="submit" class="form-button">Buscar usuario</button>
         </form>
         <?php
+        
     }
 ?>
 
