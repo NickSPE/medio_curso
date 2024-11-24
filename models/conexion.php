@@ -1,40 +1,45 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
 
-class conexion
+class Conexion
 {
     private $host;
     private $namedb;
     private $userdb;
     private $passworddb;
     private $charset;
-    private $pdo;
+    private static $pdo = null;
 
-    public function __construct($host, $namedb, $userdb, $passworddb, $charset = 'utf8')
+    public function __construct()
     {
-        $this->host = $host;
-        $this->namedb = $namedb;
-        $this->userdb = $userdb;
-        $this->passworddb = $passworddb;
-        $this->charset = $charset;
+        $this->host = DB_HOST;
+        $this->namedb = DB_NAME;
+        $this->userdb = DB_USER;
+        $this->passworddb = DB_PASSWORD;
+        $this->charset = 'utf8';
+
+        if(self::$pdo == null){
         $this->conectar();
+        }
     }
 
     private function conectar()
     {
         $dsn = "mysql:host={$this->host};dbname={$this->namedb};charset={$this->charset}";
         try {
-            $this->pdo = new PDO($dsn, $this->userdb, $this->passworddb);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$pdo = new PDO($dsn, $this->userdb, $this->passworddb);
+            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die('Hubo un error al conectar con la base de datos: ' . $e->getMessage());
         }
     }
  
-    public function obtenerconexion()
-    {
-        $this->conectar();
-        return $this->pdo;
+    public static function obtenerconexion(){
+        if (self::$pdo==null){
+            new self;}
+            //$this->conectar();
+           // return $this->pdo;
+           return self::$pdo;
     }
 
     public function contesta()
@@ -43,8 +48,4 @@ class conexion
         return $dsn;
     }
 }
-
-// Example usage
-// $conexion = new conexion('localhost', 'database_name', 'username', 'password');
-// $pdo = $conexion->obtenerconexion();
-// echo "Conexión exitosa";
+?>

@@ -7,6 +7,7 @@ if (!isset($_SESSION["txtusername"])) {
 require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/conexion.php';
 
+
 // Obtenemos la opción seleccionada desde la URL
 $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
 ?>
@@ -42,11 +43,11 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
                 break;
             case 'Ver':
                 echo "<h3>Bienvenido a la Sección de Ver</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/verdatos.php';
+                require_once $_SERVER['DOCUMENT_ROOT'].'/controllers/controladorUsuario.php';
                 break;
             case 'Ingresar':
                 echo "<h3>Bienvenido a la Sección de Ingresar datos</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/ingresardatos.php';
+                require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/controladorIngresarUsuario.php';
 
                 break;
             case 'Modificar':
