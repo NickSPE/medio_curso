@@ -92,18 +92,26 @@ La base de datos está diseñada con una
 **tabla**`usuarios` que almacena información como `id`, `username`, `password` cifrado y `perfil`.
 
 ## 🌟 **Futuras Implementaciones**
-### Integración de JavaScript
- **-Validaciones en tiempo real para formularios.**
- **-Animaciones y transiciones dinámicas en la interfaz.**
-### * Roles y Permisos de Usuario
-### * Notificaciones en Tiempo Real
+**Integración de JavaScript**
+-Validaciones en tiempo real para formularios.
+-Animaciones y transiciones dinámicas en la interfaz.
+**Roles y Permisos de Usuario**
+**Notificaciones en Tiempo Real**
 
 ## 📸 **Capturas del Sistema**
-  ### -Pantalla de Inicio de Sesión
-  ### -Dashboard del Sistema
+  -Pantalla de Inicio de Sesión
+  -Dashboard del Sistema
 
 ## ✍️ **Contribuciones**
 Las contribuciones son bienvenidas. Abre un issue o envía un pull request.
+## 📞 **Contacto**
 
-## **Licencia**
-Este proyecto está bajo la licencia MIT.
+Si tienes preguntas, sugerencias o deseas colaborar en este proyecto, no dudes en ponerte en contacto:
+
+📧 **Correo Electrónico**: [evaristoj108@gmail.com](mailto:tuemail@ejemplo.com)  
+🌐 **Portafolio**: [tuportafolio.com](https://tuportafolio.com)  
+🐦 **Twitter**: [@tuusuario](https://twitter.com/tuusuario)  
+📌 **GitHub**: [tuusuario](https://github.com/tuusuario)  
+
+También puedes abrir un **issue** en este repositorio si encuentras problemas o tienes ideas para mejorar el sistema.
+
