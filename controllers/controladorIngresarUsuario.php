@@ -16,7 +16,7 @@
         $tmpdatusuario = $_POST["datusuario"];
         $tmpdatpassword = $_POST["datpassword"];
         $tmpdatperfil = $_POST["datperfil"];
-      $modeloUsuario= new modelousuario();
+        $modeloUsuario= new modelousuario();
        
         try {
           $modeloUsuario->insertarUsuarios($tmpdatusuario, $tmpdatpassword, $tmpdatperfil);

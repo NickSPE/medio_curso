@@ -36,8 +36,8 @@ function mostrarUsuarios($usuarios) {
                     </td>
 
                     <td>
-    <a href="/controllers/controladorActualizarUsuario.php?accion=editar&usuario=<?php echo urlencode($usuario['username']); ?>">editar</a>
-</td>
+                        <a href="/controllers/controladorActualizarUsuario.php?accion=editar&usuario=<?php echo urlencode($usuario['username']); ?>">editar</a>
+                    </td>
 
 
                 </tr>
