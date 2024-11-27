@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/conexion.php';
+//todo relacionado a la base de datos deve de estar en el modelo
 class modelousuario
 {
     private $conexion;
@@ -23,7 +24,41 @@ class modelousuario
         $stmt->bindParam(':perfil', $perfil);
         return $stmt->execute();
     }
-    //deve hacer hacer un metodo para hacer un select
+       // Método para eliminar un usuario
+    public function eliminarUsuario($username)
+    {
+        $query="delete from usuarios where username=:username";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(':username', $username);
+        return $stmt->execute();
+    }
+    public function actualizarUsuario($id, $username, $password, $perfil)
+    {
+        $query = "update usuarios set username=:username, password=:password, perfil=:perfil where id=:id"; 
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':perfil', $perfil, PDO::PARAM_STR);
+        return $stmt->execute();
+    
+    }
+    public function obtenerUsuarioPorNombre($username)
+    {
+        $query="select id,username,password,perfil from usuarios where username=:username";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function existeUsuario($username)
+    {
+        $query="select id,username,password,perfil from usuarios where username=:username";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 
 }

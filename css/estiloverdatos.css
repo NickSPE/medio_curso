@@ -1,6 +1,7 @@
 /* Estilo general para la tabla */
 .custom-table {
-    width: 80%;
+    width: 60%;
+    max-width: 100%;
     margin: 20px auto;
     border-collapse: collapse;
     font-family: Arial, sans-serif;

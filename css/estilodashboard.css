@@ -16,7 +16,7 @@ body {
 
 /* Barra lateral (Sidebar) */
 .menu {
-    width: 250px;
+    width: 240px;
     background-color: #2a363a;
     color: #ffffff;
     height: 100vh;
@@ -30,12 +30,11 @@ body {
 
 .menu ul {
     list-style: none;
-    padding: 0;
-    margin: 20px 0;
+    padding: 20px 0;
 }
 
 .menu ul li {
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .menu ul li a {
@@ -66,19 +65,32 @@ body {
 
 /* Contenido principal */
 .contenido {
-    margin-left: 260px;
+    margin-left: 240px; /* Ajustado al ancho de la barra lateral */
     padding: 20px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: calc(100% - 260px);
+    width: calc(100% - 240px);
     min-height: 100vh;
+    overflow: hidden; /* Evita desbordamientos innecesarios */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado entre secciones */
 }
 
+/* Iframe estilizado */
+.contenido iframe {
+    border: none; /* Elimina los bordes del iframe */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    height: calc(100vh - 100px); /* Altura dinámica para que llene la pantalla sin desbordarse */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Agrega una sombra elegante */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que los contenidos del iframe se desborden */
+}
+
+/* Encabezados y texto */
 .contenido h3 {
     font-size: 24px;
     color: #343a40;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .contenido p {
@@ -113,8 +125,12 @@ body {
     }
 
     .contenido {
-        margin-left: 210px;
-        width: calc(100% - 210px);
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
+
+    .contenido iframe {
+        height: calc(100vh - 80px); /* Ajuste para pantallas pequeñas */
     }
 }
 

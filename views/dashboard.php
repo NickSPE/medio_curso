@@ -43,20 +43,21 @@ $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
                 break;
             case 'Ver':
                 echo "<h3>Bienvenido a la Sección de Ver</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'].'/controllers/controladorUsuario.php';
+                echo '<iframe src="' . get_controllers('controladorUsuario.php') . '"></iframe>';
                 break;
             case 'Ingresar':
                 echo "<h3>Bienvenido a la Sección de Ingresar datos</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/controllers/controladorIngresarUsuario.php';
+                echo '<iframe src="' . get_controllers('controladorIngresarUsuario.php') . '"></iframe>';
 
                 break;
             case 'Modificar':
                 echo "<h3>Bienvenido a la Sección de Modificar</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/modificardatos.php';
+                echo '<iframe src="' . get_controllers('controladorActualizarUsuario.php') . '"></iframe>';
+
                 break;
             case 'Eliminar':
                 echo "<h3>Bienvenido a la Sección de Eliminar</h3>";
-                require_once $_SERVER['DOCUMENT_ROOT'] . '/views/eliminardatos.php';
+                echo '<iframe src="' . get_controllers('ControladorEliminarUsuario.php') . '"></iframe>';
                 break;
             default:
                 echo "<h3>Opción no válida</h3>";

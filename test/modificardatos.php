@@ -23,9 +23,7 @@
             <?php
         } else {
             $tmpdatusuario = isset($_POST["datusuario"]) ? $_POST["datusuario"] : '';
- 
-            // Asegúrate de que estas variables estén definidas en config.php
-            $conexion = new conexion($host, $namedb, $userdb, $passworddb);
+
             $pdo = $conexion->obtenerconexion();
 
             if (isset($_POST["custId"])) {
@@ -73,7 +71,7 @@
                 }
             }
         }
-    } else {
+     } else {
         ?>
         <form action="" method="POST" class="form-container">
             <label for="datusuario" class="form-label">¿Qué usuario desea modificar?</label>

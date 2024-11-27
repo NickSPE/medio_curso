@@ -19,7 +19,7 @@
       $modeloUsuario= new modelousuario();
        
         try {
-          $modeloUsuario->insertarUsuarios($tmpdatpassword, $tmpdatusuario, $tmpdatperfil);
+          $modeloUsuario->insertarUsuarios($tmpdatusuario, $tmpdatpassword, $tmpdatperfil);
           echo "usuario registrado con exito";
         } catch (PDOException $e) {
             $mensaje = "Error al registrar usuario: " . $e->getMessage();

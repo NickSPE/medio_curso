@@ -11,7 +11,7 @@ function mostrarFormularioIngreso() {
         <?php if (isset($error) && $error): ?>
             <div class="error"><?php echo $error; ?></div>
         <?php endif; ?>
-
+ 
         <div class="form-group">
             <i class="fas fa-user"></i>
             <input type="text" name="datusuario" id="datusuario" placeholder="Usuario" required>
