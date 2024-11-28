@@ -108,8 +108,8 @@ Las contribuciones son bienvenidas. Abre un issue o envía un pull request.
 
 Si tienes preguntas, sugerencias o deseas colaborar en este proyecto, no dudes en ponerte en contacto:
 
-📧 **Correo Electrónico**: [evaristoj108@gmail.com](mailto:tuemail@ejemplo.com)  
-📌 **GitHub**: [NickSPE](https://github.com/tuusuario)  
+📧 **Correo Electrónico**: [evaristoj108@gmail.com](mailto:evaristoj108@gmail.com)  
+📌 **GitHub**: [NickSPE](https://github.com/NickSPE)  
 
 También puedes abrir un **issue** en este repositorio si encuentras problemas o tienes ideas para mejorar el sistema.
 
