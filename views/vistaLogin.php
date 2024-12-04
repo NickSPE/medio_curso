@@ -26,7 +26,7 @@
                     <button type="submit">LOGIN</button>
                     <div id="error-message" ></div>
                 </form>
-                    <script src="<?php echo get_urlBase('/js/JSlogin.js') ?>"></script>
+                    <script src="<?php echo get_urlBase('/js/validacionLogin.js') ?>"></script>
             </div>
         </body>
         
