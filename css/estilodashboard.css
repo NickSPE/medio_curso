@@ -1,4 +1,4 @@
-/* Reset de márgenes y rellenos */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
 }
 
 /* Body */
-body { 
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6f9;
     color: #121012;
@@ -14,7 +14,7 @@ body {
     min-height: 100vh;
 }
 
-/* Barra lateral (Sidebar) */
+/* Barra lateral (menu) */
 .menu {
     width: 240px;
     background-color: #2a363a;
@@ -25,7 +25,7 @@ body {
     left: 0;
     overflow-y: auto;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .menu ul {
@@ -63,96 +63,22 @@ body {
     color: #ffffff;
 }
 
-/* Contenido principal */
+/* Contenedor principal (contenido) */
 .contenido {
-    margin-left: 240px; /* Ajustado al ancho de la barra lateral */
+    margin-left: 240px;
     padding: 20px;
-    background-color: #ffffff;
     width: calc(100% - 240px);
+    background-color: #ffffff;
     min-height: 100vh;
-    overflow: hidden; /* Evita desbordamientos innecesarios */
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaciado entre secciones */
+    align-items: center;
+    justify-content: center;
 }
-
-/* Iframe estilizado */
 .contenido iframe {
-    border: none; /* Elimina los bordes del iframe */
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    height: calc(100vh - 100px); /* Altura dinámica para que llene la pantalla sin desbordarse */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Agrega una sombra elegante */
-    border-radius: 8px; /* Bordes redondeados */
-    overflow: hidden; /* Evita que los contenidos del iframe se desborden */
-}
-
-/* Encabezados y texto */
-.contenido h3 {
-    font-size: 24px;
-    color: #343a40;
-    margin-bottom: 10px;
-}
-
-.contenido p {
-    font-size: 16px;
-    color: #6c757d;
-}
-
-/* Botón de salir */
-#btn {
-    background-color: #dc3545;
-    color: #ffffff;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-    display: inline-block;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-}
-
-#btn:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .menu {
-        width: 200px;
-    }
-
-    .contenido {
-        margin-left: 200px;
-        width: calc(100% - 200px);
-    }
-
-    .contenido iframe {
-        height: calc(100vh - 80px); /* Ajuste para pantallas pequeñas */
-    }
-}
-
-@media (max-width: 576px) {
-    .menu {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    .contenido {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .menu ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .menu ul li {
-        margin: 5px;
-    }
-}
+    border: none; 
+    width: 100%;
+    height: calc(100vh - 100px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; }

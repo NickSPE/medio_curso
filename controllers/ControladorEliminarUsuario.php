@@ -39,6 +39,5 @@
         mostrarFormularioEliminarUsuario($mensaje);
         exit();
     }
-
     mostrarFormularioEliminarUsuario();
 ?>

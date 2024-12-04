@@ -1,4 +1,5 @@
 <?php
+
 echo '<link rel="stylesheet" type="text/css" href="/css/estiloverdatos.css">';
 function mostrarUsuarios($usuarios) {
     // Verifica que $usuarios sea un array y no esté vacío

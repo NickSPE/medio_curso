@@ -14,15 +14,15 @@ class modelousuario
             $query = $this->conexion->query('select id,username,password,perfil from usuarios');
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
-    public function insertarUsuarios($username, $password, $perfil)
+        public function insertarUsuarios($username, $password, $perfil)
         {
-
             $stmt = $this->conexion->prepare('INSERT INTO usuarios (username, password, perfil) VALUES (:username, :password, :perfil)');
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password);
             $stmt->bindParam(':perfil', $perfil);
             return $stmt->execute();
         }
+        
       
     public function eliminarUsuario($username)
         {
@@ -59,13 +59,10 @@ class modelousuario
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
     public function validarCredenciales($username) {
-            $query = "SELECT username, password FROM usuarios WHERE BINARY username = :username LIMIT 1";
+            $query = "select id,username,password,perfil from usuarios where username=:username";
             $stmt = $this->conexion->prepare($query);
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);//mejora pendiente utilizar algun algoritmo de encriptacion
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
-        
-
-
-}
+    }

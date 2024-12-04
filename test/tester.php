@@ -1,74 +1,65 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/etc/config.php';
-    require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
-
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
+}
 
-    function get_connection() {
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "dbsistema";
+if (!isset($_SESSION["txtusername"])) {
+    header('Location: ' . get_UrlBase('index.php'));
+    exit();
+}
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+require_once $_SERVER["DOCUMENT_ROOT"] . '/models/modeloUsuario.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/views/vistaActulizarUsuario.php';
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+$mensaje = '';
+$modeloUsuario = new modeloUsuario();
 
-        return $conn;
-    }
-    
-    function get_user_credentials($username) {
-        require_once $_SERVER['DOCUMENT_ROOT'].'/models/conexion.php';
-        $conn = get_connection();
-        $stmt = $conn->prepare("SELECT username, password FROM usuarios WHERE BINARY username = ? LIMIT 1");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-        $stmt->close();
-        $conn->close();
-        return $user;
-    }
-    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $v_username = $_POST["txtusername"] ?? '';
-        $v_password = $_POST["txtpassword"] ?? '';
-    
-        $user = get_user_credentials($v_username);
-    
-        if ($user && $v_password === $user['password']) {
-            $_SESSION["txtusername"] = $v_username;
-            header('Location: '.get_controllers('controladorVista.php'));
-            exit;
+// Manejo de GET: Cargar usuario para edición
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['usuario'])) {
+    $tmpdatusuario = $_GET['usuario'];
+
+    if (!empty($tmpdatusuario)) {
+        $usuario = $modeloUsuario->obtenerUsuarioPorNombre($tmpdatusuario);
+
+        if ($usuario) {
+            mostrarFormularioEdicion($usuario);
         } else {
-            header('Location: '.get_views('claveequivocada.php'));
-            exit;
+            $mensaje = "Usuario no encontrado.";
+            mostrarFormularioBusqueda($mensaje);
+        }
+    } else {
+        $mensaje = "No se ha proporcionado un nombre de usuario válido.";
+        mostrarFormularioBusqueda($mensaje);
+    }
+}
+
+// Manejo de POST: Actualizar usuario
+elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["custid"])) { // Actualizar usuario
+        $tmpcustID = $_POST["custid"];
+        $tmpdatusuario = $_POST["datusuario"];
+        $tmpdatpassword = $_POST["datpassword"];
+        $tmpdatperfil = $_POST["datperfil"];
+
+        try {
+            $modeloUsuario->actualizarUsuario($tmpcustID, $tmpdatusuario, $tmpdatpassword, $tmpdatperfil);
+            $mensaje = "Usuario actualizado con éxito.";
+        } catch (PDOException $e) {
+            $mensaje = "Error al actualizar el usuario: " . $e->getMessage();
+        }
+
+        mostrarFormularioBusqueda($mensaje);
+    } elseif (isset($_POST["buscarusuario"])) { // Buscar usuario para editar
+        $tmpdatusuario = $_POST["buscarusuario"];
+        $usuario = $modeloUsuario->obtenerUsuarioPorNombre($tmpdatusuario);
+
+        if ($usuario) {
+            mostrarFormularioEdicion($usuario);
+        } else {
+            mostrarFormularioBusqueda("Usuario no encontrado...");
         }
     }
+} else {
+    mostrarFormularioBusqueda();
+}
 ?>
-
-
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-        <link rel="stylesheet" href="<?php echo get_urlBase('/css/style.css') ?>">
-        <link rel="stylesheet" href="styles.css?v=1.0">
-
-    </head>
-    <body>
-        <div class="login-container">
-            <form action="" method="POST">
-                <label for="username">Username</label>
-                <input type="text" name="txtusername" id="txtusername" placeholder="username" required>
-                <label for="password">Password</label>
-                <input type="password" name="txtpassword" placeholder="Password" id="txtpassword" required>
-                <button type="submit">LOGIN</button>
-            </form>
-        </div>
-    </body>
-</html>

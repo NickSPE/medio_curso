@@ -13,10 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $v_password = $_POST["txtpassword"] ?? '';
 
         $modelousuario = new modelousuario();
-        $user = $modelousuario->validarCredenciales($v_username);
+        $user = $modelousuario->validarCredenciales($v_username,$v_password);
 
         if ($user && $v_password === $user['password']) {
             $_SESSION["txtusername"] = $v_username;
+            $_SESSION["txtpassword"] = $v_password;
             header('Location: ' . get_controllers('controladorVista.php'));
             exit;
         } else {
