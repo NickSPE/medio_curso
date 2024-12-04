@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: ' . get_controllers('controladorVista.php'));
             exit;
         } else {
-            header('Location: ' . get_views('claveequivocada.php'));
+            http_response_code(401);
             exit;
         }
 } else {

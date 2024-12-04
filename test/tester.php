@@ -1,65 +1,33 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+const API_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
-if (!isset($_SESSION["txtusername"])) {
-    header('Location: ' . get_UrlBase('index.php'));
-    exit();
-}
+// Manejar el evento de búsqueda
+document.getElementById('search-pokemon').addEventListener('click', async () => {
+    const pokemonNameOrId = document.getElementById('pokemon-name').value.toLowerCase().trim();
+    const output = document.getElementById('output');
 
-require_once $_SERVER["DOCUMENT_ROOT"] . '/models/modeloUsuario.php';
-require_once $_SERVER["DOCUMENT_ROOT"] . '/views/vistaActulizarUsuario.php';
-
-$mensaje = '';
-$modeloUsuario = new modeloUsuario();
-
-// Manejo de GET: Cargar usuario para edición
-if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['accion']) && $_GET['accion'] == 'editar' && isset($_GET['usuario'])) {
-    $tmpdatusuario = $_GET['usuario'];
-
-    if (!empty($tmpdatusuario)) {
-        $usuario = $modeloUsuario->obtenerUsuarioPorNombre($tmpdatusuario);
-
-        if ($usuario) {
-            mostrarFormularioEdicion($usuario);
-        } else {
-            $mensaje = "Usuario no encontrado.";
-            mostrarFormularioBusqueda($mensaje);
-        }
-    } else {
-        $mensaje = "No se ha proporcionado un nombre de usuario válido.";
-        mostrarFormularioBusqueda($mensaje);
+    if (!pokemonNameOrId) {
+        output.textContent = 'Por favor, ingresa un nombre o ID de un Pokémon.';
+        return;
     }
-}
 
-// Manejo de POST: Actualizar usuario
-elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["custid"])) { // Actualizar usuario
-        $tmpcustID = $_POST["custid"];
-        $tmpdatusuario = $_POST["datusuario"];
-        $tmpdatpassword = $_POST["datpassword"];
-        $tmpdatperfil = $_POST["datperfil"];
+    try {
+        // Solicitar datos del Pokémon
+        const response = await fetch(`${API_URL}${pokemonNameOrId}`);
+        if (!response.ok) throw new Error('Pokémon no encontrado');
 
-        try {
-            $modeloUsuario->actualizarUsuario($tmpcustID, $tmpdatusuario, $tmpdatpassword, $tmpdatperfil);
-            $mensaje = "Usuario actualizado con éxito.";
-        } catch (PDOException $e) {
-            $mensaje = "Error al actualizar el usuario: " . $e->getMessage();
-        }
+        const pokemonData = await response.json();
 
-        mostrarFormularioBusqueda($mensaje);
-    } elseif (isset($_POST["buscarusuario"])) { // Buscar usuario para editar
-        $tmpdatusuario = $_POST["buscarusuario"];
-        $usuario = $modeloUsuario->obtenerUsuarioPorNombre($tmpdatusuario);
-
-        if ($usuario) {
-            mostrarFormularioEdicion($usuario);
-        } else {
-            mostrarFormularioBusqueda("Usuario no encontrado...");
-        }
+        // Mostrar información del Pokémon
+        output.innerHTML = `
+            <h2>${pokemonData.name.toUpperCase()}</h2>
+            <p><strong>ID:</strong> ${pokemonData.id}</p>
+            <p><strong>Altura:</strong> ${pokemonData.height / 10} m</p>
+            <p><strong>Peso:</strong> ${pokemonData.weight / 10} kg</p>
+            <p><strong>Habilidades:</strong> ${pokemonData.abilities.map(a => a.ability.name).join(', ')}</p>
+            <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+        `;
+    } catch (error) {
+        console.error(error);
+        output.textContent = 'No se pudo encontrar el Pokémon. Por favor, verifica el nombre o ID.';
     }
-} else {
-    mostrarFormularioBusqueda();
-}
-?>
+});

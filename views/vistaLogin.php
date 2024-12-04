@@ -18,15 +18,18 @@
         </head>
         <body>
             <div class="login-container">
-                <form action="<?php echo get_controllers('controladorLogin.php'); ?>" method="POST">
+                <form id="login-form"action="<?php echo get_controllers('controladorLogin.php'); ?>" method="POST">
                     <label for="txtusername">Username</label>
                         <input type="text" name="txtusername" id="txtusername" placeholder="Username" required>
                     <label for="txtpassword">Password</label>
                         <input type="password" name="txtpassword" id="txtpassword" placeholder="Password" required>
                     <button type="submit">LOGIN</button>
+                    <div id="error-message" ></div>
                 </form>
+                    <script src="<?php echo get_urlBase('/js/JSlogin.js') ?>"></script>
             </div>
         </body>
+        
 </html>
 <?php
 }}

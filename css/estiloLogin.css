@@ -63,3 +63,37 @@ body {
 .login-container button:hover {
     background-color: #249627;
 }
+#error-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    padding: 15px;
+    background-color: #ffffff;
+    color: #e74c3c;
+    border: 1px solid #249627;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+#error-message .close-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #71eb76;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#error-message .close-btn:hover {
+    background-color: #249627;
+}
