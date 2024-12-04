@@ -7,140 +7,109 @@
 
 ![image](https://github.com/user-attachments/assets/502ac05a-ae67-4e65-bfc9-b67f0f97ac9f)
 
+# 🌐 Sistema de Gestión de Acceso Seguro
 
-# 🌐 **Sistema de Inicio de Sesión Moderno**
+> **Un sistema de autenticación moderno, modular y escalable para aplicaciones web profesionales.**
 
-> **Un sistema de autenticación seguro, modular y profesional diseñado para aplicaciones modernas.**
-
-Este proyecto implementa un sistema de inicio de sesión diseñado con las mejores prácticas en desarrollo web. Proporciona una experiencia de usuario fluida y segura, soportado por un backend robusto en PHP, una base de datos gestionada con **phpMyAdmin**, y un diseño responsivo creado con HTML y CSS.
+Este proyecto es una implementación robusta de un sistema de inicio de sesión, diseñado para garantizar la seguridad y ofrecer una experiencia de usuario intuitiva. Su arquitectura modular permite una fácil escalabilidad, mientras que el diseño responsivo asegura compatibilidad con dispositivos móviles y de escritorio.
 
 ---
 
-## 🚀 **Características Clave**
+## 🚀 **Características Principales**
 
-### 🔒 **Seguridad y Control**
-- **Autenticación Segura**: Validación robusta de credenciales y gestión de sesiones.
-- **Opciones de Recordatorio**: Permite recordar credenciales en sesiones futuras.
-- **Cierre de Sesión**: Módulo de cierre de sesión confiable que garantiza la limpieza de la sesión activa.
+### 🔒 **Seguridad de Primer Nivel**
+- **Cifrado Seguro**: Contraseñas almacenadas utilizando algoritmos de hash confiables.
+- **Gestión de Sesiones**: Control de sesiones seguro para evitar accesos no autorizados.
+- **Protección de Datos**: Validación y sanitización de datos para prevenir inyecciones SQL y otros ataques.
 
-### 🎨 **Diseño y Experiencia de Usuario**
-- **Interfaz Moderna**: Diseñada con CSS personalizado para una experiencia atractiva y profesional.
-- **Iconografía de Seguridad**: Elementos visuales como candados y nubes que refuerzan la percepción de protección de datos.
-- **Diseño Responsivo**: Compatible con dispositivos móviles, tablets y escritorios.
+### 🎨 **Diseño y Usabilidad**
+- **Interfaz Responsiva**: Adaptada a cualquier dispositivo gracias a un diseño CSS moderno.
+- **UX Optimizada**: Flujo intuitivo para usuarios y administradores.
+- **Estilización Modular**: Cada vista tiene su propio archivo CSS, facilitando personalizaciones específicas.
 
 ### 🧩 **Arquitectura Modular**
-- Organización en carpetas clave (`controllers`, `models`, `views`) para facilitar el desarrollo y la escalabilidad.
-- Scripts de prueba (`test`) para garantizar la funcionalidad y consistencia del sistema.
+- **Separación por Capas**: `Controllers`, `Models` y `Views` permiten un desarrollo limpio y organizado.
+- **Código Escalable**: Preparado para implementar nuevas funcionalidades sin comprometer la estabilidad del sistema.
+- **Estructura Clara**: Facilita la colaboración en equipos de desarrollo.
 
-### 💾 **Gestión de Datos con phpMyAdmin**
-- Base de datos **MySQL** gestionada con **phpMyAdmin**:
-  - Almacena usuarios, contraseñas cifradas y registros de actividades.
-  - Relación optimizada para búsquedas rápidas y eficientes.
+### 💾 **Gestión de Datos con MySQL**
+- Base de datos gestionada con **phpMyAdmin** para un control eficiente.
+- Relaciones optimizadas para búsquedas rápidas.
+- Estructura diseñada para almacenar credenciales cifradas y roles de usuario.
 
 ---
 
 ## 📂 **Estructura del Proyecto**
 
-El sistema está organizado en una arquitectura clara y funcional:
+El sistema sigue una arquitectura clara y modular, organizada en carpetas clave:
 
-### 1. **Controllers**
-Controladores responsables de la lógica del sistema:
-- `logout.php`: Maneja la funcionalidad de cierre de sesión de usuarios.
+### 📁controllers
+      ├── controladorLogin.php          # Gestión del inicio de sesión.
+      ├── controladorUsuario.php        # Operaciones CRUD para usuarios.
+      ├── logout.php                    # Manejo del cierre de sesión.
+      └── ...
+### 📁 css
+      ├── estilodashboard.css           # Estilo para el panel de administración.
+      ├── estilomodificar.css           # Estilo para la vista de edición.
+      ├── estiloingresarUsuarios.css    # Estilo para el registro de usuarios.
+      └── ...
+### 📁 img
+      └── (Archivos de imágenes utilizadas en la interfaz)
+### 📁 js
+      ├── (Proximante).
+    
+### 📁 models
+      ├── conexion.php                  # Configuración y conexión con MySQL.
+      ├── modelousuario.php             # Operaciones de datos para usuarios.
+      └── ...
+### 📁 views
+      ├── vistaLogin.php                # Página de inicio de sesión.
+      ├── dashboard.php                 # Panel principal del sistema.
+      ├── vistaIngresarUsuario.php      # Formulario para registrar usuarios.
+      └── ...
+### index.php                             # Punto de entrada al sistema.
 
-### 2. **CSS**
-Estilización personalizada:
-- `style.css`: Estilo global para el sistema.
-- Archivos específicos como `estilodashboard.css` y `estilomodificar.css` para módulos individuales.
-
-### 3. **etc**
-Configuración esencial del sistema:
-- `config.php`: Contiene las credenciales de conexión a la base de datos y parámetros clave.
-
-### 4. **Models**
-Gestión de datos:
-- `conexion.php`: Conexión centralizada a la base de datos MySQL.
-
-### 5. **Test**
-Scripts de prueba para validación:
-- `testconfig.php`: Verifica la configuración del sistema.
-- `borrarvariables.php`: Limpieza de variables para pruebas.
-
-### 6. **Views**
-Capa de presentación:
-- `dashboard.php`: Panel principal del usuario.
-- `ingresardatos.php`: Página para añadir datos al sistema.
-- `modificardatos.php`: Interfaz para modificar registros existentes.
-
-### 7. **img**
-Recursos gráficos utilizados en la interfaz.
-
----
 
 ## 🛠️ **Tecnologías Utilizadas**
-- **PHP**: Backend seguro y modular.
-- **MySQL (phpMyAdmin)**: Gestión eficiente de datos.
-- **HTML y CSS**: Diseño moderno y responsivo.
-- **Servidor Local**: Compatible con servidores como XAMPP y WAMP.
+* PHP 8.1
+* MySQL
+* HTML5 y CSS3
+* JavaScript
+* Servidor Local (XAMPP, WAMP, Laragon)
 
----
+## ⚙️ **Configuración del Sistema**
+1. Clonar el repositorio: `git clone https://github.com/NickSPE/medio_curso.git`
+2. Configurar la base de datos: ...
+3. Iniciar el servidor: ...
 
-## 📋 **Requisitos Previos**
+## 💻 **Uso del Sistema**
+* **Inicio de Sesión:** Ingresa tu usuario y contraseña en la pantalla principal.
+* **Gestión de Datos:** Registrar, actualizar y eliminar usuarios.
+* **Cierre de Sesión:** Cierra tu sesión de manera segura.
 
-Antes de comenzar, asegúrate de tener instalados:
-1. **Servidor Local** (XAMPP, WAMP, etc.).
-2. **phpMyAdmin** para gestionar la base de datos.
-3. **Navegador web** actualizado para probar el sistema.
+## 📊 **Base de Datos**
+La base de datos está diseñada con una 
+**tabla**`usuarios` que almacena información como `id`, `username`, `password` cifrado y `perfil`.
 
----
+## 🌟 **Futuras Implementaciones**
+**-Integración de JavaScript**
+    -Validaciones en tiempo real para formularios.
+    -Animaciones y transiciones dinámicas en la interfaz.
+**-Roles y Permisos de Usuario**
+**-Notificaciones en Tiempo Real**
 
-## 📝 **Configuración del Sistema**
+## 📸 **Capturas del Sistema**
+  -Pantalla de Inicio de Sesión
+  -Dashboard del Sistema
 
-1. **Clonar el Repositorio**
-   ```bash
-   git clone <[https://github.com/NickSPE/medio_curso.git]>
-2. **Configurar la Base de Datos**
-- Importa el archivo SQL proporcionado en **phpMyAdmin** para crear la base de datos requerida.
-- Edita el archivo `etc/config.php` con las credenciales de tu base de datos:
- `define('DB_HOST', 'localhost') `;
- `define('DB_USER', 'root') `;
- `define('DB_PASS', '') `;
- `define('DB_NAME', 'nombre_base_de_datos') `;
-3. **Iniciar el Servidor**
-1- Coloca los archivos en la carpeta raíz del servidor local (htdocs en XAMPP).
-2- Abre el archivo index.php en tu navegador.
----
-## 💻 Cómo Usar el Sistema
+## ✍️ **Contribuciones**
+Las contribuciones son bienvenidas. Abre un issue o envía un pull request.
+## 📞 **Contacto**
 
-### **Acceder a la Interfaz**
-- Abre `http://localhost/index.php` en tu navegador.
+Si tienes preguntas, sugerencias o deseas colaborar en este proyecto, no dudes en ponerte en contacto:
 
-### **Iniciar Sesión**
-1. Introduce tu nombre de usuario y contraseña.
-2. Haz clic en el botón **LOGIN**.
+📧 **Correo Electrónico**: [evaristoj108@gmail.com](mailto:evaristoj108@gmail.com)  
+📌 **GitHub**: [NickSPE](https://github.com/NickSPE)  
 
-### **Gestionar Datos**
-- Ingresa, modifica o elimina información desde las vistas correspondientes.
-- Visualiza los registros almacenados en el panel.
+También puedes abrir un **issue** en este repositorio si encuentras problemas o tienes ideas para mejorar el sistema.
 
-### **Cerrar Sesión**
-- Utiliza el botón de cierre de sesión para finalizar tu actividad.
-
----
-
-## 📊 Base de Datos
-
-**phpMyAdmin** se utiliza para gestionar la base de datos del sistema. La estructura incluye:
-
-### **Tabla `usuarios`**
-- **Campos**:
-  - `id`: Identificador único.
-  - `username`: Nombre de usuario.
-  - `password`: Contraseña (cifrada).
-  - `perfil`: Perfil del usuario.
-
----
-
-## 🌟 Futuras Mejoras
-- **Cifrado Avanzado**: Implementar bcrypt para contraseñas.
-- **Validación en Tiempo Real**: Añadir validación con JavaScript para mejorar la experiencia.
-- **Roles de Usuario**: Gestión de permisos y acceso según roles.
