@@ -1,5 +1,5 @@
 <?php 
-    echo '<link rel="stylesheet" type="text/css" href="/css/estilomodificar.css">';
+    echo '<link rel="stylesheet" type="text/css" href="/css/estiloActualizarUsuario.css">';
 
     function mostrarFormularioBusqueda($mensaje = '') {
         ?>

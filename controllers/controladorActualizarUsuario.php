@@ -14,6 +14,7 @@ if (!isset($_SESSION["txtusername"])) {
 $mensaje = '';
 $modeloUsuario = new modelousuario();
 
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // Caso 1: Actualizar usuario
     if (isset($_POST['custId'])) {

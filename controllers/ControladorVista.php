@@ -8,7 +8,7 @@ if(session_status()==PHP_SESSION_NONE){
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/etc/config.php'; 
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/views/dashboard.php'; 
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/views/vistaDashboard.php'; 
 
     $opcion = isset($_GET['opcion']) ? $_GET['opcion'] : 'Inicio';
     $contenido='';
