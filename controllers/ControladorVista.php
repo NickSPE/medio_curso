@@ -39,7 +39,7 @@ if(session_status()==PHP_SESSION_NONE){
             //ob_start();
             //include get_controllers_disk('controladorActualizarUsuario.php');
             //$contenido = ob_get_clean();
-            $contenido = '<h3>Bienvenido a la Sección de Modificar</h3>
+            $contenido = '
             <iframe src="' . get_controllers('controladorActualizarUsuario.php') . '" "></iframe>';
             break;
 
