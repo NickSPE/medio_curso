@@ -14,7 +14,7 @@ class modelousuario
             $query = $this->conexion->query('select id,username,password,perfil from usuarios');
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }
-        public function insertarUsuarios($username, $password, $perfil)
+    public function insertarUsuarios($username, $password, $perfil)
         {
             $stmt = $this->conexion->prepare('INSERT INTO usuarios (username, password, perfil) VALUES (:username, :password, :perfil)');
             $stmt->bindParam(':username', $username);

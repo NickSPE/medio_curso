@@ -1,0 +1,2 @@
+g++ ArtisanMakeModelPropiedadesP.cc -o ArtisanMakeModelPropiedadesP.exe
+ArtisanMakeModelPropiedadesP propiedadesProductos.sql registropropiedadesProducto.php
