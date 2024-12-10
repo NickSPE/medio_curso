@@ -19,7 +19,7 @@ function dashboard($contenido) {
                 <li><a href="?opcion=Ingresar"><i class="fas fa-plus-circle"></i>Ingresar</a></li>
                 <li><a href="?opcion=Modificar"><i class="fas fa-edit"></i>Modificar</a></li>
                 <li><a href="?opcion=Eliminar"><i class="fas fa-trash"></i>Eliminar</a></li>
-                <li><a href="<?php echo get_controllers('/logout.php') ?>" id="btn"><i class="fas fa-door-open"></i>Salir</a></li>
+                <li><a id="btnSalir" href="<?php echo get_controllers('controladorLogout.php') ?>"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
             </ul>
         </div>
 
