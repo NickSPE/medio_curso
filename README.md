@@ -49,6 +49,7 @@ El sistema utiliza una arquitectura modular y está organizado en las siguientes
 ├── 📁 css                  # Archivos CSS (Estilos)
 ├── 📁 img                  # Imágenes para la interfaz
 ├── 📁 js                   # Archivos JavaScript (Interactividad)
+├── 📁 generador            # Generador (Creación de código y configuración tablas)
 ├── 📁 models               # Modelos (Acceso a datos)
 ├── 📁 views                # Vistas (Interfaz de usuario)
 ├── 📄 index.php            # Punto de entrada al sistema
@@ -61,6 +62,33 @@ El sistema utiliza una arquitectura modular y está organizado en las siguientes
 - `controladorLogin.php`: Maneja la lógica de inicio de sesión.
 - `controladorUsuario.php`: Gestiona las operaciones CRUD para usuarios.
 - `logout.php`: Cierra la sesión de manera segura.
+
+### 📁 **generator**
+
+- **`ArtisanMakeModelProducto.cpp`**: 
+  Genera automáticamente un archivo PHP para la clase `Producto`, que incluye métodos CRUD para la tabla `productos`.
+
+- **`ArtisanMakeModelPropiedadesProducto.cpp`**: 
+  Genera automáticamente un archivo PHP para la clase `PropiedadesProductos`, con métodos CRUD para la tabla `PROPIEDADESPRODUCTOS`.
+
+- **`productos.sql`**: 
+  Contiene el esquema SQL para la tabla `productos`, incluyendo su estructura y datos iniciales si es necesario.
+
+- **`propiedadesProductos.sql`**: 
+  Define la estructura y esquema de la tabla `PROPIEDADESPRODUCTOS` en SQL, junto con posibles datos iniciales.
+
+- **`provar.bat`**: 
+  Script de prueba para automatizar la ejecución de un conjunto de comandos o scripts relacionados con el sistema.
+
+- **`provarProducto.bat`**: 
+  Script específico para probar las funcionalidades generadas para el modelo de `productos`.
+
+- **`registroProductos.php`**: 
+  Código generado automáticamente para manejar la clase `Producto`, que incluye métodos CRUD para interactuar con la base de datos.
+
+- **`registroPropiedadesProductos.php`**: 
+  Código generado automáticamente para la clase `PropiedadesProductos`, que gestiona métodos CRUD para la tabla `PROPIEDADESPRODUCTOS`.
+
 
 #### 📁 `models`
 - `conexion.php`: Configuración de conexión a MySQL.
