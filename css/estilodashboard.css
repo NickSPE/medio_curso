@@ -30,7 +30,18 @@ body {
 
 .menu ul {
     list-style: none;
-    padding: 20px 0;
+}
+.menu ul a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+
+    text-decoration: none;
+    color : #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 .menu ul li {
@@ -82,3 +93,22 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden; }
+
+    .submenu {
+        display: none;
+        list-style: none;
+        padding-left: 20px;
+        background-color: #333;
+        border-left: 4px solid #007bff;
+    }
+    .submenu.open {
+        display: block;
+    }
+    .flecha {
+        margin-left: auto;
+        font-size: 12px;
+        transition: transform 0.3s ease;
+    }
+    .flecha.rotado {
+        transform: rotate(-180deg);
+    }

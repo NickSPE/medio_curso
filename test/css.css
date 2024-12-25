@@ -1,0 +1,18 @@
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 30px;
+    background-color: #333;
+    border-left: 4px solid #007bff;
+}
+.submenu.open {
+    display: block;
+}
+.flecha {
+    margin-left: auto;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+.flecha.rotado {
+    transform: rotate(-180deg);
+}
