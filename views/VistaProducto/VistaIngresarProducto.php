@@ -11,7 +11,7 @@ function mostrarFormularioIngreso($mensaje = '') {
         <h2>🛒 Registrar Nuevo Producto</h2>
 
         <?php if (!empty($mensaje)): ?>
-            <p class="form-message"><?php echo htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8'); ?></p>
+            <p class="form-message"><?php echo ($mensaje); ?></p>
         <?php endif; ?>
 
         <form action="/controllers/ControladorProducto/ControladorIngresarProducto.php" method="POST">
