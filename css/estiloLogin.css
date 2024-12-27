@@ -4,96 +4,119 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 body {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(177, 223, 208);
-} 
+    background-color: rgb(238, 238, 238);
+}
 
 .login-container {
-    background-image: url('/img/Fondo.jpg');  
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    width: 100%;
-    max-width: 700px; 
-    height: 550px; 
-    padding: 100px 180px; 
+    display: flex;
+    width: 800px;
+    height: 450px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.login-left {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
     text-align: center;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #f86793, #80DAEB);
+}
+
+.login-left h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.login-left .signup-btn {
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #fe5b8c;
+    border: none;
+
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-left .signup-btn:hover {
+    background-color: #ffe1e8;
+}
+
+.login-right {
+    flex: 1;
+    background-color: #fff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-right h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#login-form {
+    width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.login-container label {
-    color: #0f0d0d;
-    font-size: 18px;
-    margin-top: 15px;
-
-}
-
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 80%; /* Centra los inputs y ajusta el ancho */
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-container button {
-    width: 80%;
-    position: relative;
-    top: 25%;
-    left: 0%;
-    padding: 10px;
-    background-color: #2cab30;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-container button:hover {
-    background-color: #249627;
-}
-#error-message {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 400px;
-    padding: 15px;
-    background-color: #ffffff;
-    color: #e74c3c;
-    border: 1px solid #249627;
-    border-radius: 10px;
-    text-align: center;
+#login-form label {
+    align-self: flex-start;
     font-size: 14px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    color: #333;
+    margin-bottom: 5px;
 }
 
-#error-message .close-btn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    background-color: #71eb76;
+#login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#login-form button {
+    padding: 10px;
+    background-color: #fe5b8c;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 12px;
+    border-radius: 20px;
+    font-size: 14px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
-#error-message .close-btn:hover {
-    background-color: #249627;
+#login-form button:hover {
+    background-color: #ff7e5f;
+}
+
+
+#error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
 }
