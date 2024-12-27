@@ -35,8 +35,8 @@ body {
 }
 
 .login-left h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    margin-bottom: 30px;
 }
 
 .login-left p {
@@ -72,7 +72,11 @@ body {
 
 .login-right h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: white;
+    text-shadow: 0 0 5px #87CEEB, 0 0 10px #87CEEB, 0 0 20px #87CEEB, 
+        0 0 40px #A6CEE3, 0 0 60px #A6CEE3, 0 0 80px #A6CEE3;
+
+    font-size: 35px;
 }
 
 #login-form {
@@ -87,21 +91,27 @@ body {
     align-self: flex-start;
     font-size: 14px;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 #login-form input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 26px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+    background: transparent; 
+    color: #333;
+    box-shadow: 0px 0px 10px rgba(166, 206, 227, 0.8), /* #A6CEE3 */
+            0px 0px 20px rgba(166, 206, 227, 0.6), /* #A6CEE3 */
+            0px 0px 30px rgba(135, 206, 235, 0.4); /* #87CEEB */
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #login-form button {
     padding: 10px;
-    background-color: #fe5b8c;
+    background: linear-gradient(135deg, #A6CEE3, #87CEEB);
     color: #fff;
     border: none;
     border-radius: 20px;
