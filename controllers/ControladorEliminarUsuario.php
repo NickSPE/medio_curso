@@ -4,47 +4,66 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// Incluye los modelos y vistas necesarios
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/modelousuario.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/views/VistaEliminarUsuario.php';
 
+// Verifica si el usuario tiene una sesión activa, de lo contrario redirige al login
 if (!isset($_SESSION["txtusername"])) {
     header('Location:' . get_urlBase('index.php'));
     exit();
 }
 
+// Inicializa las variables
 $mensaje = '';
 $tmpdatusuario = null;
 
-// Manejo de solicitudes
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    // Manejar POST: Mostrar formulario
+    // Captura el nombre de usuario del formulario
     $tmpdatusuario = $_POST['datusuario'] ?? null;
+
+    // **Corrección 1: Sustitución de FILTER_SANITIZE_STRING**
+    // Utiliza htmlspecialchars para evitar caracteres especiales en lugar del filtro obsoleto
+    $tmpdatusuario = htmlspecialchars(trim($tmpdatusuario), ENT_QUOTES, 'UTF-8');
 
     if (!empty($tmpdatusuario)) {
         $modelousuario = new Modelousuario();
+
         try {
+            // **Corrección 2: Verifica si el usuario existe antes de intentar eliminar**
             if ($modelousuario->existeUsuario($tmpdatusuario)) {
+                // Elimina el usuario
                 $modelousuario->eliminarUsuario($tmpdatusuario);
                 $mensaje = "Usuario eliminado correctamente.";
             } else {
                 $mensaje = "El usuario no existe.";
             }
         } catch (PDOException $e) {
-            $mensaje = "Error al eliminar usuario: " . $e->getMessage();
+            // **Corrección 3: Manejo de errores con registro**
+            // Registra las excepciones en un archivo de log
+            error_log("Error al eliminar usuario: " . $e->getMessage(), 3, $_SERVER['DOCUMENT_ROOT'] . "/logs/error.log");
+            $mensaje = "Error al eliminar usuario. Por favor, intente más tarde.";
         }
     } else {
-        $mensaje = "Por favor, ingrese un usuario.";
+        // **Corrección 4: Mensaje para datos vacíos**
+        $mensaje = "Por favor, ingrese un usuario válido.";
     }
 
+    // Muestra el formulario con el mensaje correspondiente
     mostrarFormularioEliminarUsuario($mensaje);
     exit();
 } elseif ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['accion']) && $_GET['accion'] === 'eliminar') {
-    // Manejar GET: Eliminar usuario directamente
+    // Captura el usuario desde la URL
     $tmpdatusuario = $_GET['usuario'] ?? null;
+
+    // **Corrección 1: Sustitución de FILTER_SANITIZE_STRING**
+    $tmpdatusuario = htmlspecialchars(trim($tmpdatusuario), ENT_QUOTES, 'UTF-8');
 
     if (!empty($tmpdatusuario)) {
         $modelousuario = new Modelousuario();
+
         try {
+            // **Corrección 2: Verifica si el usuario existe antes de intentar eliminar**
             if ($modelousuario->existeUsuario($tmpdatusuario)) {
                 $modelousuario->eliminarUsuario($tmpdatusuario);
                 $mensaje = "Usuario eliminado correctamente.";
@@ -52,17 +71,20 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $mensaje = "El usuario no existe.";
             }
         } catch (PDOException $e) {
-            $mensaje = "Error al eliminar usuario: " . $e->getMessage();
+            // **Corrección 3: Manejo de errores con registro**
+            error_log("Error al eliminar usuario: " . $e->getMessage(), 3, $_SERVER['DOCUMENT_ROOT'] . "/logs/error.log");
+            $mensaje = "Error al eliminar usuario. Por favor, intente más tarde.";
         }
     } else {
-        $mensaje = "Por favor, ingrese un usuario.";
+        // **Corrección 4: Mensaje para datos vacíos**
+        $mensaje = "Por favor, ingrese un usuario válido.";
     }
 
-    // Permanecer en la misma tabla (sin mostrar formulario)
-    header('Location: ' . $_SERVER['HTTP_REFERER']); // Redirigir a la misma página
+    // Redirige a la página de referencia con el mensaje correspondiente
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit();
 }
 
-// Mostrar formulario por defecto si no se especifica acción
+// **Muestra el formulario de eliminación por defecto si no hay acciones específicas**
 mostrarFormularioEliminarUsuario();
 ?>
