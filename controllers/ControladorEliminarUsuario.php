@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Captura el nombre de usuario del formulario
     $tmpdatusuario = $_POST['datusuario'] ?? null;
 
-    // **Corrección 1: Sustitución de FILTER_SANITIZE_STRING**
     // Utiliza htmlspecialchars para evitar caracteres especiales en lugar del filtro obsoleto
     $tmpdatusuario = htmlspecialchars(trim($tmpdatusuario), ENT_QUOTES, 'UTF-8');
 
@@ -45,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $mensaje = "Error al eliminar usuario. Por favor, intente más tarde.";
         }
     } else {
-        // **Corrección 4: Mensaje para datos vacíos**
+        
         $mensaje = "Por favor, ingrese un usuario válido.";
     }
 
@@ -53,10 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     mostrarFormularioEliminarUsuario($mensaje);
     exit();
 } elseif ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['accion']) && $_GET['accion'] === 'eliminar') {
-    // Captura el usuario desde la URL
+    
     $tmpdatusuario = $_GET['usuario'] ?? null;
 
-    // **Corrección 1: Sustitución de FILTER_SANITIZE_STRING**
+    
     $tmpdatusuario = htmlspecialchars(trim($tmpdatusuario), ENT_QUOTES, 'UTF-8');
 
     if (!empty($tmpdatusuario)) {
@@ -80,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $mensaje = "Por favor, ingrese un usuario válido.";
     }
 
-    // Redirige a la página de referencia con el mensaje correspondiente
+    
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit();
 }
