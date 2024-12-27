@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/models/connect/conexion.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/conexion.php';
 
 class Producto
 {

@@ -50,11 +50,37 @@ if(session_status()==PHP_SESSION_NONE){
             //$contenido = '<h3>Bienvenido a la Sección de Eliminar</h3>
             //<iframe src="' . get_controllers('ControladorEliminarUsuario.php') . '" ></iframe>';
             break;
-
+        case 'EliminarProductos':
+            ob_start();
+            include get_controllers_disk('ControladorProducto/ControladorEliminarProducto.php');
+            $contenido = ob_get_clean();
+            //$contenido = '<h3>Bienvenido a la Sección de Eliminar</h3>
+            //<iframe src="' . get_controllers('ControladorEliminarUsuario.php') . '" ></iframe>';
+            break;
+        case 'VerProducto':
+            ob_start();
+            include get_controllers_disk('ControladorProducto/ControladorVerProducto.php');
+            $contenido = ob_get_clean();
+            //$contenido = '<h3>Bienvenido a la Sección de Eliminar</h3>
+            //<iframe src="' . get_controllers('ControladorEliminarUsuario.php') . '" ></iframe>';
+            break;
+        case 'ActualizarProducto':
+            ob_start();
+            include get_controllers_disk('ControladorProducto/ControladorActualizarProducto.php');
+            $contenido = ob_get_clean();
+            //$contenido = '<h3>Bienvenido a la Sección de Eliminar</h3>
+            //<iframe src="' . get_controllers('ControladorEliminarUsuario.php') . '" ></iframe>';
+            break;
+            case 'IngresarProducto':
+            ob_start();
+            include get_controllers_disk('ControladorProducto/ControladorIngresarProducto.php');
+            $contenido = ob_get_clean();
+            break;
         default:
         http_response_code(400);
             $contenido = "<h3>error</h3>";
             break;
+        
     }
 
     dashboard($contenido);

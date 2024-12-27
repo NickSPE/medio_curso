@@ -15,7 +15,7 @@ CREATE TABLE PRODUCTOS
   RESPONSABLE varchar(128),
   LINK varchar(32),
   ULINK varchar(32),
-  DUAL integer,
+  DUAL_FLAG integer,
   FECHADETALLE varchar(75),
   CANTIDAD numeric(16,6),
   PC numeric(16,6),

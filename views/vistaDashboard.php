@@ -27,10 +27,10 @@ function dashboard($contenido) {
                 <li>
                     <a href="#" class="submenu-toggle"><i class="fas fa-store"></i>Productos <i class="fas fa-chevron-down flecha"></i></a>
                     <ul class="submenu">
-                        <li><a href="?opcion=VerProductos"><i class="fas fa-eye"></i> Ver</a></li>
-                        <li><a href="?opcion=IngresarProductos"><i class="fas fa-plus-circle"></i> Ingresar</a></li>
-                        <li><a href="?opcion=ModificarProductos"><i class="fas fa-edit"></i> Modificar</a></li>
-                        <li><a href="?opcion=EliminarProductos"><i class="fas fa-trash"></i> Eliminar</a></li>
+                        <li><a href="?opcion=VerProducto"><i class="fas fa-eye"></i> VerProducto</a></li>
+                        <li><a href="?opcion=IngresarProducto"><i class="fas fa-plus-circle"></i> Ingresar</a></li>
+                        <li><a href="?opcion=ActualizarProducto"><i class="fas fa-edit"></i> Modificar</a></li>
+                        <li><a href="?opcion=EliminarProductos"><i class="fas fa-trash"></i> EliminarProducto</a></li>
                     </ul>
                 </li>
                 
