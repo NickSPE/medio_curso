@@ -42,63 +42,62 @@ try {
                 exit();
             }
 
-            // Actualizar producto
             $resultado = $modeloProducto->editarProducto(
-                $datosProducto['NOREG'],         // NOREG
-                null,                            // FECHA
-                $datosProducto['DETALLE'],       // DETALLE
-                null,                            // UNIDAD
-                $datosProducto['PRODUCTO'],      // PRODUCTO
-                null,                            // CALCULO
-                null,                            // CANCELADO
-                null,                            // RESTO
-                null,                            // TURNO
-                null,                            // TIPO_SESION
-                null,                            // NICK
-                null,                            // CODIGO_VENDEDOR
-                null,                            // RESPONSABLE
-                null,                            // LINK
-                null,                            // ULINK
-                null,                            // DUAL_FLAG
-                null,                            // FECHADETALLE
-                $datosProducto['CANTIDAD'],      // CANTIDAD
-                null,                            // PC
-                $datosProducto['PV'],            // PV
-                null,                            // MONTO
-                null,                            // UNIDADPRODUCTO
-                null,                            // PU
-                null,                            // LIBROCONTABLE
-                null,                            // CUENTACONTABLE
-                null,                            // ESPRODUCTO
-                $datosProducto['MARCA'],         // MARCA
-                null,                            // TAMANIO
-                null,                            // PCUSD
-                null,                            // DESPLIEGUE
-                null,                            // TIPOISC
-                null,                            // TASAISC
-                null,                            // TIPODSCTO
-                null,                            // DSCTOUNIT
-                null,                            // TIPOCARGO
-                null,                            // CARGOUNIT
-                null,                            // TIPOOPERACION
-                null,                            // PR
-                null,                            // MINCOMPRA
-                $datosProducto['FECHAVENCIMIENTO'], // FECHAVENCIMIENTO
-                null,                            // VERSION_IMG
-                null,                            // SERIE
-                null,                            // CODIGOSUNAT
-                null,                            // AFECTOICBPER
-                null,                            // UBICACION
-                null,                            // PESO
-                null,                            // PMAYOR
-                null,                            // STOCKMINIMO
-                null,                            // ESTADOSERVPROD
-                null,                            // FACTURABLE
-                null,                            // PERECIBLE
-                null,                            // CLASIFICADOR
-                null,                            // RECETA
-                null,                            // NROLOTE
-                null                             // PRESENTACION
+                $datosProducto['NOREG'],       
+                null,                            
+                $datosProducto['DETALLE'],       
+                null,                           
+                $datosProducto['PRODUCTO'],   
+                null,                           
+                null,                         
+                null,                         
+                null,                         
+                null,                          
+                null,                           
+                null,                            
+                null,                           
+                null,                          
+                null,                           
+                null,                           
+                null,                           
+                $datosProducto['CANTIDAD'],     
+                null,                           
+                $datosProducto['PV'],           
+                null,                           
+                null,                          
+                null,                          
+                null,                            
+                null,                          
+                null,                           
+                $datosProducto['MARCA'],        
+                null,                           
+                null,                            
+                null,                            
+                null,                            
+                null,                            
+                null,                          
+                null,                            
+                null,                            
+                null,                            
+                null,                           
+                null,                            
+                null,                            
+                $datosProducto['FECHAVENCIMIENTO'], 
+                null,                           
+                null,                            
+                null,                           
+                null,                           
+                null,                           
+                null,                            
+                null,                            
+                null,                          
+                null,                            
+                null,                            
+                null,                            
+                null,                            
+                null,                            
+                null,                            
+                null                             
             );
             
 

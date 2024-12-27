@@ -19,8 +19,8 @@ function vistaLogin(){
         <div class="login-container">
             <div class="login-left">
                 <h1>Bienvenidos de nuevo</h1>
-                <p>"Tu próxima aventura comienza aquí."</p>
-                <button class="signup-btn">Sign Up</button>
+                <p>"Este sistema fue creado por los ing. Tapullima, Evaristo, Rengifo, Perez y Ponce.</p>
+                <p>Para nuestro profe el ing. Hubel Solis Bonifacio"</p>
             </div>
             <div class="login-right">
                 <form id="login-form" action="<?php echo get_controllers('controladorLogin.php'); ?>" method="POST">
@@ -29,7 +29,7 @@ function vistaLogin(){
                     <input type="text" name="txtusername" id="txtusername" placeholder="Username" required>
                     <label for="txtpassword">Password</label>
                     <input type="password" name="txtpassword" id="txtpassword" placeholder="Password" required>
-                    <button type="submit">LOGIN</button>
+                    <button type="submit">Login</button>
                     <div id="error-message"></div>
                 </form>
             </div>

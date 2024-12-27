@@ -12,12 +12,14 @@ if (!isset($_SESSION["txtusername"])) {
 }
 
 
-function sanitize($data) {
+function sanitize($data)
+{
     return trim($data ?? '');
 }
 
 
-function validate($data, $fields) {
+function validate($data, $fields)
+{
     foreach ($fields as $field) {
         if (empty($data[$field])) {
             return false;
@@ -28,15 +30,60 @@ function validate($data, $fields) {
 
 // Campos esperados por el modelo
 $fields = [
-    'FECHA', 'DETALLE', 'UNIDAD', 'PRODUCTO', 'CALCULO', 'CANCELADO', 'RESTO',
-    'TURNO', 'TIPO_SESION', 'NICK', 'CODIGO_VENDEDOR', 'RESPONSABLE', 'LINK', 
-    'ULINK', 'DUAL_FLAG', 'FECHADETALLE', 'CANTIDAD', 'PC', 'PV', 'MONTO', 
-    'UNIDADPRODUCTO', 'PU', 'LIBROCONTABLE', 'CUENTACONTABLE', 'ESPRODUCTO', 
-    'MARCA', 'TAMANIO', 'PCUSD', 'DESPLIEGUE', 'TIPOISC', 'TASAISC', 'TIPODSCTO', 
-    'DSCTOUNIT', 'TIPOCARGO', 'CARGOUNIT', 'TIPOOPERACION', 'PR', 'MINCOMPRA', 
-    'FECHAVENCIMIENTO', 'VERSION_IMG', 'SERIE', 'CODIGOSUNAT', 'AFECTOICBPER', 
-    'UBICACION', 'PESO', 'PMAYOR', 'STOCKMINIMO', 'ESTADOSERVPROD', 'FACTURABLE', 
-    'PERECIBLE', 'CLASIFICADOR', 'RECETA', 'NROLOTE', 'PRESENTACION'
+    'FECHA',
+    'DETALLE',
+    'UNIDAD',
+    'PRODUCTO',
+    'CALCULO',
+    'CANCELADO',
+    'RESTO',
+    'TURNO',
+    'TIPO_SESION',
+    'NICK',
+    'CODIGO_VENDEDOR',
+    'RESPONSABLE',
+    'LINK',
+    'ULINK',
+    'DUAL_FLAG',
+    'FECHADETALLE',
+    'CANTIDAD',
+    'PC',
+    'PV',
+    'MONTO',
+    'UNIDADPRODUCTO',
+    'PU',
+    'LIBROCONTABLE',
+    'CUENTACONTABLE',
+    'ESPRODUCTO',
+    'MARCA',
+    'TAMANIO',
+    'PCUSD',
+    'DESPLIEGUE',
+    'TIPOISC',
+    'TASAISC',
+    'TIPODSCTO',
+    'DSCTOUNIT',
+    'TIPOCARGO',
+    'CARGOUNIT',
+    'TIPOOPERACION',
+    'PR',
+    'MINCOMPRA',
+    'FECHAVENCIMIENTO',
+    'VERSION_IMG',
+    'SERIE',
+    'CODIGOSUNAT',
+    'AFECTOICBPER',
+    'UBICACION',
+    'PESO',
+    'PMAYOR',
+    'STOCKMINIMO',
+    'ESTADOSERVPROD',
+    'FACTURABLE',
+    'PERECIBLE',
+    'CLASIFICADOR',
+    'RECETA',
+    'NROLOTE',
+    'PRESENTACION'
 ];
 
 $mensaje = '';
@@ -49,54 +96,97 @@ try {
             $datosProducto[$field] = sanitize($_POST[$field] ?? null);
         }
 
-        // Validar campos obligatorios
         if (!validate($datosProducto, ['DETALLE', 'PRODUCTO', 'CANTIDAD', 'PV', 'MARCA'])) {
             $mensaje = "❌ Los campos DETALLE, PRODUCTO, CANTIDAD, PV y MARCA son obligatorios.";
             mostrarFormularioIngreso($mensaje);
             exit();
         }
 
-        // Insertar producto
+
+
+        $fechaNuevo = new DateTime();
+        $fecha = $fechaNuevo->format('Y-m-d');
+
+        $fechaVencimientoString = DateTime::createFromFormat('Y-m-d', $datosProducto['FECHAVENCIMIENTO']);
+
+        if ($fechaVencimientoString === false) {
+            die('Error: La fecha no tiene el formato esperado (d-m-Y).');
+        }
+
+        $fechaVencimiento = $fechaVencimientoString->format('Y-m-d');
+
+        $calculo = $datosProducto['CANTIDAD'] * $datosProducto['PV'];
+        $cancelado = 0;
+        $resto = 0;
+        $turno = 1;
+        $tipo_sesion = 1;
+        $dual_flag = 1;
+        $pc = 1.0;
+        $monto_valor = $datosProducto['CANTIDAD'] * $datosProducto['PV'];
+        $monto = number_format($monto_valor, 2, '.', '');
+        $pu = number_format($monto_valor, 2, '.', '');
+
+        $es_producto = 1;
+        $pc_usd = 1.0;
+        $despliegue = 1;
+        $tipo_isc = 1;
+        $tasa_isc = 1.0;
+        $tipo_descto = 1;
+        $dscto_unit = 1.0;
+        $tipo_cargo = 1;
+        $cargo_unit = 1.0;
+        $tipo_operacion  = 1;
+        $pr = 1.0;
+        $min_compra = 1.0;
+
+
+
+        $datosProducto['VERSION_IMG'] = 1;
+        $datosProducto['AFECTOICBPER'] = 1;
+        $datosProducto['PESO'] = 1.0;
+         $datosProducto['PMAYOR'] = 1.0;
+         $datosProducto['ESTADOSERVPROD'] = 1;
+         $datosProducto['RECETA'] = 1;
         $resultado = $modeloProducto->insertarProducto(
-            $datosProducto['FECHA'],
+            $fecha,
             $datosProducto['DETALLE'],
             $datosProducto['UNIDAD'],
             $datosProducto['PRODUCTO'],
-            $datosProducto['CALCULO'],
-            $datosProducto['CANCELADO'],
-            $datosProducto['RESTO'],
-            $datosProducto['TURNO'],
-            $datosProducto['TIPO_SESION'],
+            $calculo,
+            $cancelado,
+            $resto,
+            $turno,
+            $tipo_sesion,
             $datosProducto['NICK'],
             $datosProducto['CODIGO_VENDEDOR'],
             $datosProducto['RESPONSABLE'],
             $datosProducto['LINK'],
             $datosProducto['ULINK'],
-            $datosProducto['DUAL_FLAG'],
+            $dual_flag,
             $datosProducto['FECHADETALLE'],
             $datosProducto['CANTIDAD'],
-            $datosProducto['PC'],
+            $pc,
             $datosProducto['PV'],
-            $datosProducto['MONTO'],
+            $monto,
             $datosProducto['UNIDADPRODUCTO'],
-            $datosProducto['PU'],
+            $pu,
             $datosProducto['LIBROCONTABLE'],
             $datosProducto['CUENTACONTABLE'],
-            $datosProducto['ESPRODUCTO'],
+            $es_producto,
             $datosProducto['MARCA'],
             $datosProducto['TAMANIO'],
-            $datosProducto['PCUSD'],
-            $datosProducto['DESPLIEGUE'],
-            $datosProducto['TIPOISC'],
-            $datosProducto['TASAISC'],
-            $datosProducto['TIPODSCTO'],
-            $datosProducto['DSCTOUNIT'],
-            $datosProducto['TIPOCARGO'],
-            $datosProducto['CARGOUNIT'],
-            $datosProducto['TIPOOPERACION'],
-            $datosProducto['PR'],
-            $datosProducto['MINCOMPRA'],
-            $datosProducto['FECHAVENCIMIENTO'],
+            $pc_usd,
+            $despliegue,
+            $tipo_isc,
+            $tasa_isc,
+            $tipo_descto,
+            $dscto_unit,
+            $tipo_cargo,
+            $cargo_unit,
+            $tipo_operacion,
+            $pr,
+            $min_compra,
+            $fechaVencimiento,
             $datosProducto['VERSION_IMG'],
             $datosProducto['SERIE'],
             $datosProducto['CODIGOSUNAT'],
@@ -111,7 +201,8 @@ try {
             $datosProducto['CLASIFICADOR'],
             $datosProducto['RECETA'],
             $datosProducto['NROLOTE'],
-            $datosProducto['PRESENTACION']
+            $datosProducto['PRESENTACION'],
+
         );
 
         $mensaje = $resultado ? "✅ ¡Producto registrado con éxito!" : "❌ No se pudo registrar el producto.";
@@ -122,4 +213,3 @@ try {
 
 // Mostrar el formulario con el mensaje
 mostrarFormularioIngreso($mensaje);
-?>
