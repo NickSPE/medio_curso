@@ -1,179 +1,136 @@
 
-**Dashboard del sistema**
+🎯 **Sistema de Gestión de Productos**
 
-![image](https://github.com/user-attachments/assets/502ac05a-ae67-4e65-bfc9-b67f0f97ac9f)
+📄 **Descripción del Proyecto**
+El Sistema de Gestión de Productos es una aplicación web diseñada para administrar productos de manera eficiente, 
+permitiendo realizar operaciones como crear, leer, actualizar y eliminar productos en una base de datos. 
+Este sistema utiliza una arquitectura basada en el modelo MVC (Modelo-Vista-Controlador) para garantizar la separación 
+de responsabilidades y facilitar el mantenimiento.
 
-# 🌐 Sistema de Gestión de Acceso Seguro
+🛠️ **Tecnologías Utilizadas**
+- 🌐 Lenguaje Backend: PHP 8.1
+- 🗄️ Base de Datos: MySQL
+- 🎨 Framework Frontend: HTML5, CSS3, JavaScript
+- 🚀 Servidor Web: Apache (Laragon como entorno de desarrollo)
+- 🏗️ Arquitectura: Modelo-Vista-Controlador (MVC)
 
-> **Un sistema de autenticación moderno, escalable y seguro para aplicaciones web profesionales.**
+✨ **Características Principales**
+1️⃣ **Gestión de Productos**:
+   - 📝 Registro de nuevos productos con datos como nombre, detalle, cantidad, precio, entre otros.
+   - 📋 Listado de productos con opciones de búsqueda y filtrado.
+   - ✏️ Edición y actualización de datos de productos existentes.
+   - 🗑️ Eliminación de productos.
 
-El proyecto es un sistema integral de gestión y autenticación que combina un inicio de sesión seguro con un dashboard dinámico para la administración eficiente de usuarios y datos. Diseñado para garantizar la seguridad de los usuarios, este sistema también prioriza la experiencia de uso fluida y moderna. Su arquitectura modular no solo facilita el mantenimiento, sino también su expansión futura, mientras que su diseño responsivo asegura una visualización óptima en dispositivos móviles y de escritorio.
+2️⃣ **Sistema de Usuarios**:
+   - 🔒 Autenticación y autorización basada en sesiones.
+   - 🛡️ Protección de rutas mediante verificación de usuario autenticado.
 
----
+3️⃣ **Compatibilidad y Escalabilidad**:
+   - ⚙️ Diseñado para ser escalable y adaptable a nuevos requisitos.
+   - ✅ Compatible con PHP 8.1 y estándares modernos de desarrollo web.
 
-## 🚀 **Características Principales**
+📁 **Estructura del Proyecto**
+El proyecto sigue la arquitectura MVC, separando claramente la lógica de negocio, la presentación y el control.
 
-### 🔒 **Seguridad**
-- **Validaciones en el Servidor y Cliente:** Protección contra inyecciones SQL, XSS y CSRF.
-- **Gestión de Sesiones Segura:** Uso de tokens únicos para cada sesión, con validación de tiempo de expiración.
-
-### 🎨 **Diseño y Usabilidad**
-- **Notificaciones de Error Dinámicas:** Feedback inmediato al usuario mediante ventanas emergentes.
-- **Diseño Moderno:** Estilo profesional para páginas clave como inicio de sesión, dashboard y formularios.
-
-### 🧩 **Arquitectura Modular (MVC)**
-- **Separación de Responsabilidades:** `Controllers`, `Models` y `Views` bien definidos.
-- **Escalabilidad:** Fácil integración de nuevas funcionalidades sin comprometer el código base.
-- **Código Limpio:** Organización clara para facilitar la colaboración en equipos de desarrollo.
-
-### 💾 **Gestión de Datos con MySQL**
-- **Base de Datos Relacional:** Optimizada para manejar operaciones CRUD de usuarios.
-- **Estructura Clara:** Tablas diseñadas con índices para búsquedas rápidas.
-- **Soporte para Roles de Usuario:** Diferenciación de permisos según perfiles (e.g., Administrador, Usuario).
-
-### ⚙️ **Funcionalidades Dinámicas con JavaScript**
-- **Validaciones en Tiempo Real:** Formularios interactivos para mejorar la experiencia del usuario.
-- **Integración de `Fetch API`:** Manejo de solicitudes en segundo plano para validaciones sin recargar la página.
-- **Interactividad:** Efectos visuales y notificaciones dinámicas.
-
----
-
-## 📂 **Estructura del Proyecto**
-
-El sistema utiliza una arquitectura modular y está organizado en las siguientes carpetas:
-
-### **Directorio de Proyecto:**
 ```
-📦 Proyecto
-├── 📁 controllers          # Controladores (Lógica de negocio)
-├── 📁 css                  # Archivos CSS (Estilos)
-├── 📁 img                  # Imágenes para la interfaz
-├── 📁 js                   # Archivos JavaScript (Interactividad)
-├── 📁 generador            # Generador (Creación de código y configuración tablas)
-├── 📁 models               # Modelos (Acceso a datos)
-├── 📁 views                # Vistas (Interfaz de usuario)
-├── 📄 index.php            # Punto de entrada al sistema
-└── 📄 README.md            # Documentación del proyecto
+├── controllers/             # Controladores para gestionar la lógica de la aplicación
+│   ├── ControladorProducto.php
+│   ├── ControladorVista.php
+│   └── ControladorUsuario.php
+├── models/                  # Modelos que interactúan con la base de datos
+│   ├── ModeloProducto.php
+│   └── ModeloUsuario.php
+├── views/                   # Vistas HTML para la interfaz de usuario
+│   ├── VistaProducto/
+│   │   ├── VistaListaProductos.php
+│   │   ├── VistaDetalleProducto.php
+│   │   └── VistaIngresarProducto.php
+│   └── VistaUsuario/
+├── etc/                     # Configuraciones adicionales
+│   └── config.php
+├── index.php                # Punto de entrada principal
+└── README.md                # Documentación del proyecto
 ```
------------------
 
-### **Descripción de Carpetas Clave:**
-#### 📁 `controllers`
-- `controladorLogin.php`: Maneja la lógica de inicio de sesión.
-- `controladorUsuario.php`: Gestiona las operaciones CRUD para usuarios.
-- `logout.php`: Cierra la sesión de manera segura.
+📋 **Requisitos Previos**
+Antes de iniciar el proyecto, asegúrate de tener instalado:
+- 🔧 PHP 8.1 o superior
+- 🗄️ MySQL 5.7 o superior
+- 📦 Composer (para la gestión de dependencias)
+- 🌐 Servidor Apache (incluido en Laragon, XAMPP o similar)
 
-### 📁 **generator**
+⚙️ **Configuración Inicial**
+1️⃣ **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/NickSPE/medio_curso.git
+   cd medio_curso
+   ```
 
-- **`ArtisanMakeModelProducto.cpp`**: 
-  Genera automáticamente un archivo PHP para la clase `Producto`, que incluye métodos CRUD para la tabla `productos`.
+2️⃣ **Configura la base de datos**:
+   - 🛠️ Crea una base de datos en MySQL llamada `dbsistema`.
+   - 📥 Importa el archivo SQL proporcionado para crear las tablas necesarias:
+     ```bash
+     mysql -u [usuario] -p dbsistema < dbsistema.sql
+     ```
 
-- **`ArtisanMakeModelPropiedadesProducto.cpp`**: 
-  Genera automáticamente un archivo PHP para la clase `PropiedadesProductos`, con métodos CRUD para la tabla `PROPIEDADESPRODUCTOS`.
+3️⃣ **Configura las credenciales de la base de datos en `etc/config.php`**:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_NAME', 'dbsistema');
+   define('DB_USER', 'tu_usuario');
+   define('DB_PASS', 'tu_contraseña');
+   ```
 
-- **`productos.sql`**: 
-  Contiene el esquema SQL para la tabla `productos`, incluyendo su estructura y datos iniciales si es necesario.
+4️⃣ **Inicia el servidor web**:
+   ```bash
+   php -S localhost:8000
+   ```
 
-- **`propiedadesProductos.sql`**: 
-  Define la estructura y esquema de la tabla `PROPIEDADESPRODUCTOS` en SQL, junto con posibles datos iniciales.
+5️⃣ **Abre la aplicación en tu navegador**:
+   🌐 http://medio_curso.test/controllers/controladorLogin.php
 
-- **`provar.bat`**: 
-  Script de prueba para automatizar la ejecución de un conjunto de comandos o scripts relacionados con el sistema.
+🛠️ **Uso del Sistema**
+1️⃣ **Autenticación de Usuario**:
+   - 🔑 Inicia sesión utilizando un usuario registrado.
+   - 📝 Si no tienes credenciales, regístrate en la página de registro.
 
-- **`provarProducto.bat`**: 
-  Script específico para probar las funcionalidades generadas para el modelo de `productos`.
+2️⃣ **Gestión de Productos**:
+   - ➕ **Crear Producto**:
+     - 📋 Navega a la sección "Agregar Producto" para registrar un nuevo producto.
+     - Completa los campos obligatorios y haz clic en "Registrar".
+   - 🔍 **Listar Productos**:
+     - En el menú principal, selecciona "Lista de Productos" para visualizar todos los productos registrados.
+   - ✏️ **Editar Producto**:
+     - Haz clic en el botón "Editar" junto al producto deseado, realiza los cambios y guarda.
+   - 🗑️ **Eliminar Producto**:
+     - Selecciona "Eliminar" para borrar un producto específico.
 
-- **`registroProductos.php`**: 
-  Código generado automáticamente para manejar la clase `Producto`, que incluye métodos CRUD para interactuar con la base de datos.
+📌 **Buenas Prácticas de Desarrollo**
+- 📂 **Estructura de Código**:
+  - Mantén la lógica de negocio en los modelos, las operaciones en los controladores, y el diseño en las vistas.
+- 🔐 **Seguridad**:
+  - Usa funciones de sanitización (`htmlspecialchars`, `trim`) para evitar vulnerabilidades como inyección SQL o XSS.
+- 🛠️ **Manejo de Errores**:
+  - Captura errores con bloques `try-catch` y regístralos en los logs para facilitar la depuración.
 
-- **`registroPropiedadesProductos.php`**: 
-  Código generado automáticamente para la clase `PropiedadesProductos`, que gestiona métodos CRUD para la tabla `PROPIEDADESPRODUCTOS`.
+🤝 **Contribuciones**
+¡Las contribuciones son bienvenidas! Si deseas colaborar:
+1️⃣ Realiza un fork del repositorio.
+2️⃣ Crea una rama con tu funcionalidad:
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
+3️⃣ Realiza tus cambios y súbelos:
+   ```bash
+   git push origin feature/nueva-funcionalidad
+   ```
+4️⃣ Abre un Pull Request y describe tu contribución.
 
+📧 **Contacto**
+Si tienes preguntas o necesitas soporte, no dudes en contactarme:
+- **Autores**: NickSPE, RengiCodeMaster, The-Nasa, yimmy, Marry
+- 📩 Email: soporte@nickproyectos.com
+- 🔗 Repositorio: GitHub (https://github.com/NickSPE/medio_curso)
 
-#### 📁 `models`
-- `conexion.php`: Configuración de conexión a MySQL.
-- `modelousuario.php`: Métodos para interactuar con la base de datos (e.g., validación de credenciales, hash de contraseñas).
-
-#### 📁 `views`
-- `vistaLogin.php`: Página de inicio de sesión con diseño intuitivo.
-- `dashboard.php`: Panel principal con opciones de administración.
-- `vistaIngresarUsuario.php`: Formulario para registrar usuarios.
-
-#### 📁 `js`
-- `validacionLogin.js`: Validaciones en tiempo real para formularios de inicio de sesión.
-
-#### 📁 `css`
-- `estilodashboard.css`: Estilos para el panel de administración.
-- `estilologin.css`: Estilos para la página de inicio de sesión.
-
----
-
-## 🛠️ **Requisitos del Sistema**
-### **Software Necesario:**
-1. **Servidor Local**: XAMPP, Laragon o WAMP.
-2. **PHP**: Versión 7.4 o superior.
-3. **MySQL**: Configurado con phpMyAdmin.
-
-### **Librerías y Herramientas:**
-- PHP `PDO` para interacción con MySQL.
-- `bcrypt` para el hash de contraseñas.
-- `Fetch API` para manejar solicitudes en segundo plano.
-
----
-
-## ⚙️ **Instalación y Configuración**
-
-### 1. **Clonar el Repositorio:**
-      ```bash
-      git clone https://github.com/NickSPE/medio_curso.git
-      ```
-
-### 2. **Configurar la Base de Datos:**
-
-1. Crear una base de datos llamada **sistema_usuarios**.
-2. Importar el archivo SQL ubicado en `/etc/sistema_usuarios.sql`.
-
-### 3. **Configurar el Proyecto:**
-
-1. Editar el archivo `/models/conexion.php` para añadir tus credenciales de MySQL.
-      ```php
-      define('DB_HOST', 'localhost');
-      define('DB_USER', 'tu_usuario');
-      define('DB_PASS', 'tu_contraseña');
-      define('DB_NAME', 'sistema_usuarios');
-      ```
-
-### 4. **Iniciar el Servidor Local**
-
-1. Abrir **XAMPP** o **Laragon** y activar los módulos de **Apache** y **MySQL**.
-
-### 5. **Acceder al Sistema**
-
-1. Abrir el navegador y dirigirse a:  
-      [http://localhost/medio_curso](http://localhost/medio_curso)
-
----
-
-## 🌟 Futuras Implementaciones
-
-- **Roles y Permisos Avanzados**: Diferentes niveles de acceso para Administradores y Usuarios.
-- **Reportes en PDF**: Exportar listados y datos en formato PDF.
-- **Notificaciones en Tiempo Real**: Uso de WebSockets para actualizaciones instantáneas.
-- **Autenticación de Dos Factores (2FA)**: Aumentar la seguridad del inicio de sesión.
-
----
-
-## ✍️ Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejorar este sistema, por favor:
-
-1. **Crea un fork** del repositorio.
-2. Realiza tus cambios.
-3. Envía un **pull request** con una breve descripción de tus mejoras.
-
----
-
-## 📞 Contacto
-
-📧 **Correo Electrónico**: [evaristoj108@gmail.com](mailto:evaristoj108@gmail.com)  
-📌 **GitHub**: [NickSPE](https://github.com/NickSPE)
+📜 **Licencia**
+Este proyecto está licenciado bajo la MIT License. Puedes usarlo libremente, pero por favor menciona al autor original.
